@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A_Hypten</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="desktop-shell">
+    <div class="app">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-icon">❤</div>
+          <div>
+            <p class="brand-title">A_Hypten</p>
+            <p class="brand-subtitle">Анализ симптомов и рекомендации</p>
+          </div>
+        </div>
+        <div class="header-meta">
+          <span class="status-dot"></span>
+          <span>Система активна</span>
+        </div>
+      </header>
+
+      <div class="desktop-layout">
+        <aside class="sidebar">
+          <div class="sidebar-title">Навигация</div>
+          <nav class="side-nav">
+            <button class="side-btn active" data-screen="home" onclick="openScreen('home')">
+              <span class="side-icon">⌂</span>
+              <span>Главная</span>
+            </button>
+            <button class="side-btn" data-screen="symptoms" onclick="openScreen('symptoms')">
+              <span class="side-icon">✚</span>
+              <span>Симптомы</span>
+            </button>
+            <button class="side-btn" data-screen="history" onclick="openScreen('history')">
+              <span class="side-icon">☰</span>
+              <span>История</span>
+            </button>
+            <button class="side-btn" data-screen="profile" onclick="openScreen('profile')">
+              <span class="side-icon">◉</span>
+              <span>Профиль</span>
+            </button>
+          </nav>
+
+          <div class="side-note" id="ontologyInfo">
+            Доступно симптомов: —
+          </div>
+        </aside>
+
+        <main class="content-area">
+          <section class="screen active" id="screen-home">
+            <div class="card">
+              <div class="hero-chip">Поддержка оценки состояния</div>
+              <h2>Оценка состояния здоровья по симптомам</h2>
+              <p class="text">
+                Выберите симптомы, получите возможное состояние и рекомендации по дальнейшим действиям.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" onclick="openScreen('symptoms')">Начать анализ</button>
+                <button class="btn btn-secondary" onclick="openScreen('history')">Открыть историю</button>
+              </div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Доступ к сервису в любое время</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">Быстро</div>
+                <div class="stat-label">Получение результата за несколько действий</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="symptomCountStat">—</div>
+                <div class="stat-label">доступных симптомов</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-symptoms">
+            <div class="desktop-analysis">
+              <div class="card">
+                <h3>Выбор симптомов</h3>
+                <p class="text" style="margin-bottom:16px;">
+                  Отметьте симптомы, которые наблюдаются в настоящий момент.
+                </p>
+
+                <div class="search-box">
+                  <input type="text" id="searchInput" placeholder="Поиск симптомов..." />
+                </div>
+
+                <div class="symptom-grid" id="symptomGrid"></div>
+
+                <p class="selected-count" id="selectedCount">Выбрано симптомов: 0</p>
+
+                <div class="btn-row">
+                  <button class="btn btn-primary" onclick="analyzeSymptoms()">Получить результат</button>
+                  <button class="btn btn-secondary" onclick="clearSymptoms()">Сбросить выбор</button>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3>Результат анализа</h3>
+                <p class="text" style="margin-bottom:16px;">
+                  Здесь отображается возможное состояние и рекомендации.
+                </p>
+
+                <div class="status-box success" id="statusBox">
+                  <p class="status-title" id="statusTitle">Анализ еще не выполнен</p>
+                  <p class="status-text" id="statusText">
+                    Выберите симптомы и нажмите кнопку «Получить результат».
+                  </p>
+                </div>
+
+                <div class="list-title">Выбранные симптомы</div>
+                <ul class="clean-list" id="selectedList">
+                  <li>Нет данных</li>
+                </ul>
+
+                <div class="list-title">Рекомендации</div>
+                <ul class="clean-list" id="recommendationList">
+                  <li>После анализа здесь появятся рекомендации.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-history">
+            <div class="card">
+              <h3>История обращений</h3>
+              <p class="text" style="margin-bottom:16px;">
+                Результаты предыдущих анализов отображаются в этом разделе.
+              </p>
+
+              <div class="history-list">
+                <div class="history-item">
+                  <div class="history-top">
+                    <p class="history-name">Риск гипертензивного состояния</p>
+                    <span class="history-date">12.04.2026</span>
+                  </div>
+                  <p class="history-text">
+                    Симптомы: головная боль, головокружение, шум в ушах.
+                  </p>
+                </div>
+
+                <div class="history-item">
+                  <div class="history-top">
+                    <p class="history-name">Сердечно-сосудистый риск</p>
+                    <span class="history-date">05.04.2026</span>
+                  </div>
+                  <p class="history-text">
+                    Симптомы: нарушение зрения, головная боль.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-profile">
+            <div class="card">
+              <h3>Профиль пользователя</h3>
+              <p class="text" style="margin-bottom:16px;">
+                Личные данные и параметры использования сервиса.
+              </p>
+
+              <div class="profile-row">
+                <div class="profile-label">Имя</div>
+                <div class="profile-value">Пользователь</div>
+              </div>
+              <div class="profile-row">
+                <div class="profile-label">Статус</div>
+                <div class="profile-value">Активный</div>
+              </div>
+              <div class="profile-row">
+                <div class="profile-label">Платформа</div>
+                <div class="profile-value">Web / Mobile</div>
+              </div>
+              <div class="profile-row">
+                <div class="profile-label">Сервис</div>
+                <div class="profile-value">A_Hypten</div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <nav class="mobile-nav">
+        <button class="mobile-btn active" data-screen="home" onclick="openScreen('home')">
+          <span class="mobile-icon">⌂</span>
+          <span>Главная</span>
+        </button>
+        <button class="mobile-btn" data-screen="symptoms" onclick="openScreen('symptoms')">
+          <span class="mobile-icon">✚</span>
+          <span>Симптомы</span>
+        </button>
+        <button class="mobile-btn" data-screen="history" onclick="openScreen('history')">
+          <span class="mobile-icon">☰</span>
+          <span>История</span>
+        </button>
+        <button class="mobile-btn" data-screen="profile" onclick="openScreen('profile')">
+          <span class="mobile-icon">◉</span>
+          <span>Профиль</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
