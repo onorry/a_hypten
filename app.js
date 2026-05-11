@@ -1,4 +1,3 @@
-```javascript
 const screens = document.querySelectorAll('.screen');
 const sideButtons = document.querySelectorAll('.side-btn');
 const mobileButtons = document.querySelectorAll('.mobile-btn');
