@@ -22,6 +22,92 @@ let ontologySymptoms = [];
 let ontologyNodesById = {};
 let syndromeMap = [];
 let analysisHistory = [];
+let currentQuestion = null;
+let selectedSymptoms = [];
+let answers = [];
+
+function getStartQuestion() {
+  const startRelation = ontologyData.relations.find(r => r.name === 'start_question');
+  if (!startRelation) return null;
+
+  return ontologyNodesById[startRelation.destination_node_id];
+}
+
+function renderQuestion(question) {
+  const questionBox = document.getElementById('questionBox');
+
+  questionBox.innerHTML = `
+    <h3>${question.name}</h3>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="answerQuestion('yes')">Да</button>
+      <button class="btn btn-secondary" onclick="answerQuestion('no')">Нет</button>
+    </div>
+  `;
+}
+
+function answerQuestion(answer) {
+  if (!currentQuestion) return;
+
+  answers.push({
+    question: currentQuestion.name,
+    answer: answer
+  });
+
+  if (answer === 'yes') {
+    const symptomRelation = ontologyData.relations.find(r =>
+      r.source_node_id === currentQuestion.id && r.name === 'detects_symptom'
+    );
+
+    if (symptomRelation) {
+      const symptom = ontologyNodesById[symptomRelation.destination_node_id];
+      if (symptom) selectedSymptoms.push(symptom.name);
+    }
+  }
+
+  const nextRelationName = answer === 'yes' ? 'next_if_yes' : 'next_if_no';
+
+  const nextRelation = ontologyData.relations.find(r =>
+    r.source_node_id === currentQuestion.id && r.name === nextRelationName
+  );
+
+  if (nextRelation) {
+    currentQuestion = ontologyNodesById[nextRelation.destination_node_id];
+    renderQuestion(currentQuestion);
+  } else {
+    finishQuestionnaire();
+  }
+}
+
+function finishQuestionnaire() {
+  const questionBox = document.getElementById('questionBox');
+
+  questionBox.innerHTML = `
+    <h3>Опрос завершён</h3>
+    <p>Выбранные симптомы: ${selectedSymptoms.join(', ') || 'не выявлены'}</p>
+    <button class="btn btn-primary" onclick="analyzeQuestionnaireResult()">Показать результат</button>
+  `;
+}
+
+function analyzeQuestionnaireResult() {
+  const found = findDiagnosesBySymptoms(selectedSymptoms);
+
+  if (!found.length) {
+    statusTitle.textContent = 'Подходящее состояние не определено';
+    statusText.textContent = 'По результатам опроса точное совпадение не найдено.';
+    recommendationList.innerHTML = '<li>При ухудшении состояния обратитесь к врачу.</li>';
+    return;
+  }
+
+  const best = found[0];
+
+  statusTitle.textContent = `Наиболее вероятное состояние: ${best.name}`;
+  statusText.textContent = `Совпало симптомов: ${best.matchCount} из ${best.total}.`;
+
+  const recommendations = getRecommendationsByDiagnosis(best.name);
+  recommendationList.innerHTML = recommendations.map(item => `<li>${item}</li>`).join('');
+
+  addHistoryItem(best.name, selectedSymptoms);
+}
 
 function openScreen(name) {
   screens.forEach(screen => {
@@ -407,6 +493,11 @@ async function loadOntology() {
     ontologyNodesById = {};
     syndromeMap = [];
   }
+currentQuestion = getStartQuestion();
+
+if (currentQuestion) {
+  renderQuestion(currentQuestion);
+}
 }
 
 loadHistoryFromStorage();
