@@ -91,35 +91,49 @@
     по онтологической модели.
   </p>
 
-  <div id="pressureForm" class="pressure-form">
+  <div class="pressure-panel" id="pressureForm">
 
-    <label class="input-group">
-      Верхнее давление
+  <div class="pressure-head">
+    <h4>Показатели давления</h4>
+
+    <p>
+      Введите верхнее и нижнее давление
+      в мм рт. ст.
+    </p>
+  </div>
+
+  <div class="pressure-inputs">
+
+    <label class="pressure-field">
+      <span>Верхнее давление</span>
 
       <input
         type="number"
         id="systolicInput"
-        placeholder="Например, 140"
+        placeholder="120"
       >
     </label>
 
-    <label class="input-group">
-      Нижнее давление
+    <label class="pressure-field">
+      <span>Нижнее давление</span>
 
       <input
         type="number"
         id="diastolicInput"
-        placeholder="Например, 90"
+        placeholder="80"
       >
     </label>
 
-    <button
-      class="btn btn-primary"
-      onclick="startPressureAnalysis()"
-    >
-      Продолжить анализ
-    </button>
   </div>
+
+  <button
+    class="btn btn-primary pressure-button"
+    onclick="startPressureAnalysis()"
+  >
+    Продолжить анализ
+  </button>
+
+</div>
 
   <div id="questionBox">
     <p class="text">
