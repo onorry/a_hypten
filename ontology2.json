@@ -1,5 +1,5 @@
 {
-    "last_id": "809",
+    "last_id": "998",
     "namespaces": {
         "default": "http://knova.ru/user/1750249255820",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -352,134 +352,140 @@
         {
             "attributes": {
                 "type": "question",
-                "order": "1"
+                "order": "1",
+                "deprecated_route": "true",
+                "note": "В приложении заменено числовым вводом АД"
             },
             "id": "139",
             "name": "Есть ли данные об артериальном давлении?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
+            "position_x": 1200,
             "position_y": 340
         },
         {
             "attributes": {
                 "type": "question",
-                "order": "2"
+                "order": "2",
+                "deprecated_route": "true",
+                "note": "В приложении заменено числовым вводом АД"
             },
             "id": "141",
             "name": "Давление крайне высокое?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
+            "position_x": 1200,
             "position_y": 495
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "3",
+                "deprecated_route": "true",
+                "note": "В приложении заменено числовым вводом АД"
+            },
+            "id": "143",
+            "name": "Давление высокое?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 1200,
+            "position_y": 650
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "1"
+            },
+            "id": "145",
+            "name": "Есть ли головная боль?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 300
         },
         {
             "attributes": {
                 "type": "question",
                 "order": "3"
             },
-            "id": "143",
-            "name": "Давление высокое?",
+            "id": "147",
+            "name": "Есть ли нарушение зрения?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 650
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "4"
-            },
-            "id": "145",
-            "name": "Есть ли головная боль?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 805
+            "position_x": 2000,
+            "position_y": 540
         },
         {
             "attributes": {
                 "type": "question",
                 "order": "5"
             },
-            "id": "147",
-            "name": "Есть ли нарушение зрения?",
+            "id": "149",
+            "name": "Есть ли головокружение?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 960
+            "position_x": 2000,
+            "position_y": 780
         },
         {
             "attributes": {
                 "type": "question",
                 "order": "6"
             },
-            "id": "149",
-            "name": "Есть ли головокружение?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 1115
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "7"
-            },
             "id": "151",
             "name": "Есть ли тошнота?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 1270
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "8"
-            },
-            "id": "153",
-            "name": "Есть ли тревожность?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 1425
+            "position_x": 2000,
+            "position_y": 900
         },
         {
             "attributes": {
                 "type": "question",
                 "order": "9"
             },
-            "id": "155",
-            "name": "Есть ли нарушение сознания?",
+            "id": "153",
+            "name": "Есть ли тревожность?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 1580
+            "position_x": 2000,
+            "position_y": 1260
         },
         {
             "attributes": {
                 "type": "question",
-                "order": "10"
+                "order": "21"
+            },
+            "id": "155",
+            "name": "Есть ли нарушение сознания?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 2700
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "24"
             },
             "id": "157",
             "name": "Есть ли судороги?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 1735
+            "position_x": 2000,
+            "position_y": 3060
         },
         {
             "attributes": {
                 "type": "question",
-                "order": "11"
+                "order": "25"
             },
             "id": "159",
             "name": "Есть ли изменения сетчатки или отёк диска зрительного нерва?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 1890
+            "position_x": 2000,
+            "position_y": 3180
         },
         {
             "attributes": {
                 "type": "question",
-                "order": "12"
+                "order": "32"
             },
             "id": "161",
             "name": "Есть ли резистентность к стандартной терапии?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 2045
+            "position_x": 2000,
+            "position_y": 4020
         },
         {
             "attributes": {
@@ -488,8 +494,8 @@
             "id": "163",
             "name": "Завершить опрос и выполнить анализ",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 2975
+            "position_x": 2000,
+            "position_y": 4140
         },
         {
             "attributes": {
@@ -1454,35 +1460,35 @@
         {
             "attributes": {
                 "type": "question",
-                "order": "13"
+                "order": "11"
             },
             "id": "489",
             "name": "Есть ли боль в груди?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 2200
+            "position_x": 2000,
+            "position_y": 1500
         },
         {
             "attributes": {
                 "type": "question",
-                "order": "14"
+                "order": "13"
             },
             "id": "492",
             "name": "Есть ли одышка?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 2355
+            "position_x": 2000,
+            "position_y": 1740
         },
         {
             "attributes": {
                 "type": "question",
-                "order": "15"
+                "order": "16"
             },
             "id": "495",
             "name": "Есть ли нарушение речи или онемение конечностей?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 2510
+            "position_x": 2000,
+            "position_y": 2100
         },
         {
             "attributes": {
@@ -1498,13 +1504,13 @@
         {
             "attributes": {
                 "type": "question",
-                "order": "17"
+                "order": "26"
             },
             "id": "502",
             "name": "Есть ли носовое кровотечение?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 2820
+            "position_x": 2000,
+            "position_y": 3300
         },
         {
             "attributes": {
@@ -2371,50 +2377,14 @@
         {
             "attributes": {
                 "type": "question",
-                "order": "18",
+                "order": "2",
                 "source": "AHA / WHO / Mayo Clinic"
             },
             "id": "758",
             "name": "Есть ли выраженная головная боль?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3000
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "19",
-                "source": "AHA / WHO / Mayo Clinic"
-            },
-            "id": "761",
-            "name": "Есть ли спутанность сознания?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3155
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "20",
-                "source": "AHA / WHO / Mayo Clinic"
-            },
-            "id": "764",
-            "name": "Был ли эпизод отсутствия ответа на стимулы?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3310
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "21",
-                "source": "AHA / WHO / Mayo Clinic"
-            },
-            "id": "767",
-            "name": "Есть ли внезапная слабость?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3465
+            "position_x": 2000,
+            "position_y": 420
         },
         {
             "attributes": {
@@ -2422,11 +2392,11 @@
                 "order": "22",
                 "source": "AHA / WHO / Mayo Clinic"
             },
-            "id": "770",
-            "name": "Есть ли внезапное онемение?",
+            "id": "761",
+            "name": "Есть ли спутанность сознания?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3620
+            "position_x": 2000,
+            "position_y": 2820
         },
         {
             "attributes": {
@@ -2434,47 +2404,47 @@
                 "order": "23",
                 "source": "AHA / WHO / Mayo Clinic"
             },
+            "id": "764",
+            "name": "Был ли эпизод отсутствия ответа на стимулы?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 2940
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "17",
+                "source": "AHA / WHO / Mayo Clinic"
+            },
+            "id": "767",
+            "name": "Есть ли внезапная слабость?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 2220
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "18",
+                "source": "AHA / WHO / Mayo Clinic"
+            },
+            "id": "770",
+            "name": "Есть ли внезапное онемение?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 2340
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "4",
+                "source": "AHA / WHO / Mayo Clinic"
+            },
             "id": "773",
             "name": "Есть ли потеря зрения?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3775
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "24",
-                "source": "AHA / WHO / Mayo Clinic"
-            },
-            "id": "776",
-            "name": "Есть ли боль в животе?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 3930
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "25",
-                "source": "AHA / WHO / Mayo Clinic"
-            },
-            "id": "779",
-            "name": "Есть ли значимые отеки?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 4085
-        },
-        {
-            "attributes": {
-                "type": "question",
-                "order": "26",
-                "source": "AHA / WHO / Mayo Clinic"
-            },
-            "id": "782",
-            "name": "Сохраняется ли давление высоким при повторном измерении?",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 4240
+            "position_x": 2000,
+            "position_y": 660
         },
         {
             "attributes": {
@@ -2482,11 +2452,47 @@
                 "order": "27",
                 "source": "AHA / WHO / Mayo Clinic"
             },
+            "id": "776",
+            "name": "Есть ли боль в животе?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 3420
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "28",
+                "source": "AHA / WHO / Mayo Clinic"
+            },
+            "id": "779",
+            "name": "Есть ли значимые отеки?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 3540
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "30",
+                "source": "AHA / WHO / Mayo Clinic"
+            },
+            "id": "782",
+            "name": "Сохраняется ли давление высоким при повторном измерении?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 3780
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "31",
+                "source": "AHA / WHO / Mayo Clinic"
+            },
             "id": "785",
             "name": "Повышенное давление протекает без выраженных симптомов?",
             "namespace": "http://knova.ru/user/1750249255820",
-            "position_x": 1450,
-            "position_y": 4395
+            "position_x": 2000,
+            "position_y": 3900
         },
         {
             "attributes": {
@@ -2497,6 +2503,484 @@
             "namespace": "http://knova.ru/user/1750249255820",
             "position_x": 620,
             "position_y": 5500
+        },
+        {
+            "attributes": {
+                "source": "Cleveland Clinic / Mayo Clinic",
+                "type": "symptom"
+            },
+            "id": "810",
+            "name": "Уменьшение мочеиспускания",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 1700
+        },
+        {
+            "attributes": {
+                "source": "AHA / Mayo Clinic",
+                "type": "symptom"
+            },
+            "id": "812",
+            "name": "Боль или давление за грудиной",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 1820
+        },
+        {
+            "attributes": {
+                "source": "AHA / Mayo Clinic",
+                "type": "symptom"
+            },
+            "id": "814",
+            "name": "Затрудненное дыхание",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 1940
+        },
+        {
+            "attributes": {
+                "source": "AHA / Mayo Clinic",
+                "type": "symptom"
+            },
+            "id": "816",
+            "name": "Внезапное нарушение походки",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 2060
+        },
+        {
+            "attributes": {
+                "source": "Mayo Clinic",
+                "type": "symptom"
+            },
+            "id": "818",
+            "name": "Покалывание или потеря чувствительности",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 2180
+        },
+        {
+            "attributes": {
+                "source": "Mayo Clinic / NCBI Bookshelf",
+                "type": "symptom"
+            },
+            "id": "820",
+            "name": "Повторная рвота",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 2300
+        },
+        {
+            "attributes": {
+                "source": "AHA / Mayo Clinic",
+                "type": "symptom"
+            },
+            "id": "822",
+            "name": "Сильная боль в спине",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 2420
+        },
+        {
+            "attributes": {
+                "source": "Cleveland Clinic",
+                "type": "symptom"
+            },
+            "id": "824",
+            "name": "Выраженное сердцебиение",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3100,
+            "position_y": 2540
+        },
+        {
+            "attributes": {
+                "type": "syndrome",
+                "source": "AHA / Mayo Clinic / Cleveland Clinic"
+            },
+            "id": "826",
+            "name": "Гипертензивное состояние с возможными почечными признаками",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3900,
+            "position_y": 620
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Результат не является диагнозом. При уменьшении мочеиспускания или выраженных отёках на фоне высокого давления рекомендуется обратиться за медицинской помощью.",
+                "source": "AHA / Mayo Clinic / Cleveland Clinic"
+            },
+            "id": "831",
+            "name": "Рек. доп.1.1",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 550
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Сохраните данные давления и список симптомов для врача.",
+                "source": "AHA / Mayo Clinic / Cleveland Clinic"
+            },
+            "id": "833",
+            "name": "Рек. доп.1.2",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 620
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Не изменяйте лечение самостоятельно.",
+                "source": "AHA / Mayo Clinic / Cleveland Clinic"
+            },
+            "id": "835",
+            "name": "Рек. доп.1.3",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 690
+        },
+        {
+            "attributes": {
+                "type": "syndrome",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "837",
+            "name": "Гипертензивное состояние с выраженной болью в груди или спине",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3900,
+            "position_y": 880
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "При боли в груди или выраженной боли в спине на фоне крайне высокого давления требуется срочная медицинская оценка.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "843",
+            "name": "Рек. доп.2.1",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 810
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Не выполняйте физическую нагрузку до консультации специалиста.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "845",
+            "name": "Рек. доп.2.2",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 880
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "При усилении боли или одышке следует вызвать экстренную помощь.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "847",
+            "name": "Рек. доп.2.3",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 950
+        },
+        {
+            "attributes": {
+                "type": "syndrome",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "849",
+            "name": "Гипертензивное состояние с дыхательными жалобами",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3900,
+            "position_y": 1140
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "При одышке или затруднённом дыхании на фоне высокого давления рекомендуется срочно обратиться за медицинской помощью.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "855",
+            "name": "Рек. доп.3.1",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1070
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Оставайтесь в покое до оценки состояния специалистом.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "857",
+            "name": "Рек. доп.3.2",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1140
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Повторно зафиксируйте показатели давления, если это безопасно.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "859",
+            "name": "Рек. доп.3.3",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1210
+        },
+        {
+            "attributes": {
+                "type": "syndrome",
+                "source": "Mayo Clinic / NCBI Bookshelf"
+            },
+            "id": "861",
+            "name": "Гипертензивное состояние с желудочно-кишечными проявлениями",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3900,
+            "position_y": 1400
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Тошнота или рвота на фоне очень высокого давления требуют внимательной оценки состояния.",
+                "source": "Mayo Clinic / NCBI Bookshelf"
+            },
+            "id": "869",
+            "name": "Рек. доп.4.1",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1330
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "При повторной рвоте, боли в животе или ухудшении самочувствия обратитесь за медицинской помощью.",
+                "source": "Mayo Clinic / NCBI Bookshelf"
+            },
+            "id": "871",
+            "name": "Рек. доп.4.2",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1400
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Используйте результат приложения только как справочную информацию.",
+                "source": "Mayo Clinic / NCBI Bookshelf"
+            },
+            "id": "873",
+            "name": "Рек. доп.4.3",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1470
+        },
+        {
+            "attributes": {
+                "type": "syndrome",
+                "source": "Cleveland Clinic / AHA"
+            },
+            "id": "875",
+            "name": "Гипертензивное состояние с вегетативными проявлениями",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3900,
+            "position_y": 1660
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Сердцебиение и тревожность могут сопровождать повышение давления, но не позволяют установить диагноз без врача.",
+                "source": "Cleveland Clinic / AHA"
+            },
+            "id": "883",
+            "name": "Рек. доп.5.1",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1590
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Рекомендуется повторно измерить давление после отдыха.",
+                "source": "Cleveland Clinic / AHA"
+            },
+            "id": "885",
+            "name": "Рек. доп.5.2",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1660
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "При боли в груди, одышке или слабости следует обратиться за медицинской помощью.",
+                "source": "Cleveland Clinic / AHA"
+            },
+            "id": "887",
+            "name": "Рек. доп.5.3",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1730
+        },
+        {
+            "attributes": {
+                "type": "syndrome",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "889",
+            "name": "Гипертензивное состояние с признаками возможного нарушения мозгового кровообращения",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 3900,
+            "position_y": 1920
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "При нарушении речи, внезапной слабости, онемении или нарушении походки следует вызвать экстренную помощь.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "898",
+            "name": "Рек. доп.6.1",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1850
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Не ждите самостоятельного улучшения состояния.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "900",
+            "name": "Рек. доп.6.2",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1920
+        },
+        {
+            "attributes": {
+                "type": "recommendation",
+                "text": "Передайте специалистам данные о давлении и времени появления симптомов.",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "902",
+            "name": "Рек. доп.6.3",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 4500,
+            "position_y": 1990
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "12",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "904",
+            "name": "Есть ли боль или давление за грудиной?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 1620
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "15",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "908",
+            "name": "Есть ли сильная боль в спине?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 1980
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "7",
+                "source": "Mayo Clinic / NCBI Bookshelf"
+            },
+            "id": "912",
+            "name": "Есть ли рвота?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 1020
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "8",
+                "source": "Mayo Clinic / NCBI Bookshelf"
+            },
+            "id": "915",
+            "name": "Есть ли повторная рвота?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 1140
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "10",
+                "source": "Cleveland Clinic"
+            },
+            "id": "918",
+            "name": "Есть ли сердцебиение?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 1380
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "29",
+                "source": "Cleveland Clinic"
+            },
+            "id": "922",
+            "name": "Есть ли уменьшение мочеиспускания?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 3660
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "14",
+                "source": "AHA / Mayo Clinic"
+            },
+            "id": "925",
+            "name": "Есть ли затрудненное дыхание?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 1860
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "20",
+                "source": "Mayo Clinic"
+            },
+            "id": "929",
+            "name": "Есть ли внезапное нарушение походки?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 2580
+        },
+        {
+            "attributes": {
+                "type": "question",
+                "order": "19",
+                "source": "Mayo Clinic"
+            },
+            "id": "932",
+            "name": "Есть ли покалывание или потеря чувствительности?",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 2000,
+            "position_y": 2460
         }
     ],
     "relations": [
@@ -3054,7 +3538,7 @@
         },
         {
             "attributes": {},
-            "destination_node_id": "139",
+            "destination_node_id": "145",
             "id": "165",
             "name": "start_question",
             "namespace": "http://knova.ru/user/1750249255820",
@@ -3153,198 +3637,6 @@
             "destination_node_id": "36",
             "id": "177",
             "name": "detects_symptom",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "161"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "141",
-            "id": "178",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "139"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "145",
-            "id": "179",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "139"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "155",
-            "id": "180",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "141"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "143",
-            "id": "181",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "141"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "145",
-            "id": "182",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "143"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "145",
-            "id": "183",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "143"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "147",
-            "id": "184",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "145"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "147",
-            "id": "185",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "145"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "149",
-            "id": "186",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "147"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "149",
-            "id": "187",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "147"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "151",
-            "id": "188",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "149"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "151",
-            "id": "189",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "149"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "153",
-            "id": "190",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "151"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "153",
-            "id": "191",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "151"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "489",
-            "id": "192",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "153"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "489",
-            "id": "193",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "153"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "157",
-            "id": "194",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "155"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "157",
-            "id": "195",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "155"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "159",
-            "id": "196",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "157"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "159",
-            "id": "197",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "157"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "161",
-            "id": "198",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "159"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "161",
-            "id": "199",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "159"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "163",
-            "id": "200",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "161"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "163",
-            "id": "201",
-            "name": "next_if_no",
             "namespace": "http://knova.ru/user/1750249255820",
             "source_node_id": "161"
         },
@@ -4982,86 +5274,6 @@
         },
         {
             "attributes": {},
-            "destination_node_id": "492",
-            "id": "505",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "489"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "492",
-            "id": "506",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "489"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "495",
-            "id": "507",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "492"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "495",
-            "id": "508",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "492"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "499",
-            "id": "509",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "495"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "499",
-            "id": "510",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "495"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "502",
-            "id": "511",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "499"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "502",
-            "id": "512",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "499"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "758",
-            "id": "513",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "502"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "758",
-            "id": "514",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "502"
-        },
-        {
-            "attributes": {},
             "destination_node_id": "131",
             "id": "515",
             "name": "detects_symptom",
@@ -6582,171 +6794,1195 @@
         },
         {
             "attributes": {},
-            "destination_node_id": "761",
-            "id": "788",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "758"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "761",
-            "id": "789",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "758"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "764",
-            "id": "790",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "761"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "764",
-            "id": "791",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "761"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "767",
-            "id": "792",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "764"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "767",
-            "id": "793",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "764"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "770",
-            "id": "794",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "767"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "770",
-            "id": "795",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "767"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "773",
-            "id": "796",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "770"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "773",
-            "id": "797",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "770"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "776",
-            "id": "798",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "773"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "776",
-            "id": "799",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "773"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "779",
-            "id": "800",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "776"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "779",
-            "id": "801",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "776"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "782",
-            "id": "802",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "779"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "782",
-            "id": "803",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "779"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "785",
-            "id": "804",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "782"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "785",
-            "id": "805",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "782"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "161",
-            "id": "806",
-            "name": "next_if_yes",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "785"
-        },
-        {
-            "attributes": {},
-            "destination_node_id": "161",
-            "id": "807",
-            "name": "next_if_no",
-            "namespace": "http://knova.ru/user/1750249255820",
-            "source_node_id": "785"
-        },
-        {
-            "attributes": {},
             "destination_node_id": "1",
             "id": "809",
             "name": "is_a",
             "namespace": "http://knova.ru/user/1750249255820",
             "source_node_id": "808"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "811",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "810"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "813",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "812"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "815",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "814"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "817",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "816"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "819",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "818"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "821",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "820"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "823",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "822"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "825",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "824"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "13",
+            "id": "827",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "17",
+            "id": "828",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "545",
+            "id": "829",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "810",
+            "id": "830",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "831",
+            "id": "832",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "833",
+            "id": "834",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "835",
+            "id": "836",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "826"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "13",
+            "id": "838",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "17",
+            "id": "839",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "243",
+            "id": "840",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "263",
+            "id": "841",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "822",
+            "id": "842",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "843",
+            "id": "844",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "845",
+            "id": "846",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "847",
+            "id": "848",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "837"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "13",
+            "id": "850",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "17",
+            "id": "851",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "247",
+            "id": "852",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "560",
+            "id": "853",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "814",
+            "id": "854",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "855",
+            "id": "856",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "857",
+            "id": "858",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "859",
+            "id": "860",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "849"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "13",
+            "id": "862",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "17",
+            "id": "863",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "864",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "59"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "59",
+            "id": "865",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "271",
+            "id": "866",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "820",
+            "id": "867",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "542",
+            "id": "868",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "869",
+            "id": "870",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "871",
+            "id": "872",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "873",
+            "id": "874",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "861"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "13",
+            "id": "876",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "877",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "131"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "131",
+            "id": "878",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "15",
+            "id": "879",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "60"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "60",
+            "id": "880",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "275",
+            "id": "881",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "824",
+            "id": "882",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "883",
+            "id": "884",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "885",
+            "id": "886",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "887",
+            "id": "888",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "875"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "13",
+            "id": "890",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "17",
+            "id": "891",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "259",
+            "id": "892",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "533",
+            "id": "893",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "551",
+            "id": "894",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "554",
+            "id": "895",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "816",
+            "id": "896",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "818",
+            "id": "897",
+            "name": "symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "898",
+            "id": "899",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "900",
+            "id": "901",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "902",
+            "id": "903",
+            "name": "recommendation",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "889"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "905",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "904"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "812",
+            "id": "906",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "904"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "243",
+            "id": "907",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "904"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "909",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "908"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "822",
+            "id": "910",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "908"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "263",
+            "id": "911",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "908"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "913",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "912"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "271",
+            "id": "914",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "912"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "916",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "915"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "820",
+            "id": "917",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "915"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "919",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "918"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "275",
+            "id": "920",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "918"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "824",
+            "id": "921",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "918"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "923",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "922"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "810",
+            "id": "924",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "922"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "926",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "925"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "814",
+            "id": "927",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "925"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "560",
+            "id": "928",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "925"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "930",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "929"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "816",
+            "id": "931",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "929"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "137",
+            "id": "933",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "932"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "818",
+            "id": "934",
+            "name": "detects_symptom",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "932"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "758",
+            "id": "935",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "145"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "758",
+            "id": "936",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "145"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "147",
+            "id": "937",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "758"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "147",
+            "id": "938",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "758"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "773",
+            "id": "939",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "147"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "773",
+            "id": "940",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "147"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "149",
+            "id": "941",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "773"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "149",
+            "id": "942",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "773"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "151",
+            "id": "943",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "149"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "151",
+            "id": "944",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "149"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "912",
+            "id": "945",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "151"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "912",
+            "id": "946",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "151"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "915",
+            "id": "947",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "912"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "915",
+            "id": "948",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "912"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "153",
+            "id": "949",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "915"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "153",
+            "id": "950",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "915"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "918",
+            "id": "951",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "153"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "918",
+            "id": "952",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "153"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "489",
+            "id": "953",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "918"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "489",
+            "id": "954",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "918"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "904",
+            "id": "955",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "489"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "904",
+            "id": "956",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "489"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "492",
+            "id": "957",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "904"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "492",
+            "id": "958",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "904"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "925",
+            "id": "959",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "492"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "925",
+            "id": "960",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "492"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "908",
+            "id": "961",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "925"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "908",
+            "id": "962",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "925"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "495",
+            "id": "963",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "908"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "495",
+            "id": "964",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "908"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "767",
+            "id": "965",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "495"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "767",
+            "id": "966",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "495"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "770",
+            "id": "967",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "767"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "770",
+            "id": "968",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "767"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "932",
+            "id": "969",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "770"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "932",
+            "id": "970",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "770"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "929",
+            "id": "971",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "932"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "929",
+            "id": "972",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "932"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "155",
+            "id": "973",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "929"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "155",
+            "id": "974",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "929"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "761",
+            "id": "975",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "155"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "761",
+            "id": "976",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "155"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "764",
+            "id": "977",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "761"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "764",
+            "id": "978",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "761"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "157",
+            "id": "979",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "764"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "157",
+            "id": "980",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "764"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "159",
+            "id": "981",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "157"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "159",
+            "id": "982",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "157"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "502",
+            "id": "983",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "159"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "502",
+            "id": "984",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "159"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "776",
+            "id": "985",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "502"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "776",
+            "id": "986",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "502"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "779",
+            "id": "987",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "776"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "779",
+            "id": "988",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "776"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "922",
+            "id": "989",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "779"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "922",
+            "id": "990",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "779"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "782",
+            "id": "991",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "922"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "782",
+            "id": "992",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "922"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "785",
+            "id": "993",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "782"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "785",
+            "id": "994",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "782"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "161",
+            "id": "995",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "785"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "161",
+            "id": "996",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "785"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "163",
+            "id": "997",
+            "name": "next_if_yes",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "161"
+        },
+        {
+            "attributes": {},
+            "destination_node_id": "163",
+            "id": "998",
+            "name": "next_if_no",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "source_node_id": "161"
         }
     ],
     "visualize_ont_path": ""
