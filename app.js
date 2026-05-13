@@ -56,6 +56,14 @@ function addSymptomByName(name) {
   }
 }
 
+function addSymptomNode(node) {
+  if (!node) return;
+
+  if (!selectedSymptoms.includes(node.name)) {
+    selectedSymptoms.push(node.name);
+  }
+}
+
 function updateSelectedSymptomsView() {
   selectedList.innerHTML = selectedSymptoms.length
     ? selectedSymptoms.map(item => `<li>${item}</li>`).join('')
@@ -85,7 +93,7 @@ function startQuestionnaire() {
   const systolicInput = document.getElementById('systolicInput');
   const diastolicInput = document.getElementById('diastolicInput');
 
-  if (pressureForm) pressureForm.style.display = 'block';
+  if (pressureForm) pressureForm.style.display = 'flex';
 
   if (systolicInput) systolicInput.value = '';
   if (diastolicInput) diastolicInput.value = '';
@@ -122,13 +130,18 @@ function startPressureAnalysis() {
     return;
   }
 
+  const systolicRange = findPressureRangeFromOntology('systolic', systolic);
+  const diastolicRange = findPressureRangeFromOntology('diastolic', diastolic);
+
   pressureData = {
     systolic,
     diastolic,
-    category: classifyPressure(systolic, diastolic)
+    systolicRange: systolicRange?.name || 'Диапазон верхнего давления не определён',
+    diastolicRange: diastolicRange?.name || 'Диапазон нижнего давления не определён',
+    category: getPressureCategory(systolicRange, diastolicRange)
   };
 
-  applyPressureSymptoms(pressureData);
+  applyPressureRanges(systolicRange, diastolicRange);
   updateSelectedSymptomsView();
 
   if (pressureForm) pressureForm.style.display = 'none';
@@ -146,47 +159,64 @@ function startPressureAnalysis() {
     : 'status-box success';
 
   statusTitle.textContent = 'Давление обработано';
-  statusText.textContent = `Введено АД: ${systolic}/${diastolic} мм рт. ст. Далее ответьте на уточняющие вопросы.`;
+  statusText.textContent = `Введено АД: ${systolic}/${diastolic} мм рт. ст. ${pressureData.systolicRange}; ${pressureData.diastolicRange}.`;
 
   renderQuestion(currentQuestion);
 }
 
-function classifyPressure(systolic, diastolic) {
-  if (systolic >= 180 || diastolic >= 120) return 'crisis';
-  if (systolic >= 140 || diastolic >= 90) return 'high';
-  if (systolic < 90 || diastolic < 60) return 'low';
-  return 'normal';
+function findPressureRangeFromOntology(kind, value) {
+  if (!ontologyData) return null;
+
+  const ranges = ontologyData.nodes.filter(node => {
+    const attrs = node.attributes || {};
+
+    return attrs.type === 'pressure_range' && attrs.kind === kind;
+  });
+
+  return ranges.find(node => {
+    const attrs = node.attributes || {};
+
+    const min = attrs.min === '' || attrs.min === undefined
+      ? -Infinity
+      : Number(attrs.min);
+
+    const max = attrs.max === '' || attrs.max === undefined
+      ? Infinity
+      : Number(attrs.max);
+
+    return value >= min && value <= max;
+  }) || null;
 }
 
-function applyPressureSymptoms(data) {
-  const { systolic, diastolic, category } = data;
+function applyPressureRanges(systolicRange, diastolicRange) {
+  [systolicRange, diastolicRange].forEach(rangeNode => {
+    if (!rangeNode) return;
 
-  if (category === 'crisis') {
-    addSymptomByName('Крайне высокое АД');
+    const symptomRelations = ontologyData.relations.filter(r =>
+      r.source_node_id === rangeNode.id &&
+      r.name === 'detects_symptom'
+    );
 
-    if (systolic >= 180) {
-      addSymptomByName('Крайне высокое верхнее АД');
-    }
+    symptomRelations.forEach(relation => {
+      const symptom = ontologyNodesById[relation.destination_node_id];
+      addSymptomNode(symptom);
+    });
+  });
+}
 
-    if (diastolic >= 120) {
-      addSymptomByName('Крайне высокое нижнее АД');
-    }
+function getPressureCategory(systolicRange, diastolicRange) {
+  const categories = [
+    systolicRange?.attributes?.category,
+    diastolicRange?.attributes?.category
+  ].filter(Boolean);
 
-    return;
-  }
+  if (categories.includes('crisis')) return 'crisis';
+  if (categories.includes('hypertension_stage_2')) return 'hypertension_stage_2';
+  if (categories.includes('hypertension_stage_1')) return 'hypertension_stage_1';
+  if (categories.includes('elevated')) return 'elevated';
+  if (categories.includes('low')) return 'low';
 
-  if (category === 'high') {
-    addSymptomByName('Высокое давление');
-    return;
-  }
-
-  if (category === 'low') {
-    addSymptomByName('Низкое АД');
-    addSymptomByName('Крайне низкое АД');
-    return;
-  }
-
-  addSymptomByName('Нормальное АД');
+  return 'normal';
 }
 
 function renderQuestion(question) {
@@ -235,10 +265,7 @@ function answerQuestion(answer) {
 
     symptomRelations.forEach(relation => {
       const symptom = ontologyNodesById[relation.destination_node_id];
-
-      if (symptom && !selectedSymptoms.includes(symptom.name)) {
-        selectedSymptoms.push(symptom.name);
-      }
+      addSymptomNode(symptom);
     });
   }
 
@@ -418,7 +445,7 @@ function analyzeQuestionnaireResult() {
   statusTitle.textContent = `Наиболее вероятное состояние: ${best.name}`;
 
   const pressureText = pressureData
-    ? ` Введённое АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст.`
+    ? ` Введённое АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст. Категории: ${pressureData.systolicRange}; ${pressureData.diastolicRange}.`
     : '';
 
   statusText.textContent =
@@ -492,18 +519,26 @@ function renderHistory() {
     ? analysisHistory
         .slice()
         .reverse()
-        .map(item => `
-          <div class="history-item">
-            <div class="history-top">
-              <p class="history-name">${item.diagnosis}</p>
-              <span class="history-date">${formatDate(item.date)}</span>
-            </div>
+        .map(item => {
+          const pressureText = item.pressure
+            ? `<p class="history-text">АД: ${item.pressure.systolic}/${item.pressure.diastolic} мм рт. ст.</p>`
+            : '';
 
-            <p class="history-text">
-              Симптомы: ${item.symptoms.join(', ')}.
-            </p>
-          </div>
-        `)
+          return `
+            <div class="history-item">
+              <div class="history-top">
+                <p class="history-name">${item.diagnosis}</p>
+                <span class="history-date">${formatDate(item.date)}</span>
+              </div>
+
+              ${pressureText}
+
+              <p class="history-text">
+                Симптомы: ${item.symptoms.join(', ')}.
+              </p>
+            </div>
+          `;
+        })
         .join('')
     : `
       <div class="history-item">

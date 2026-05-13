@@ -686,7 +686,8 @@ h3 {
 .pressure-field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  width: 100%;
 }
 
 .pressure-field span {
@@ -716,8 +717,10 @@ h3 {
 
 @media (max-width: 640px) {
   .pressure-inputs {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
   .pressure-button {
     width: 100%;
