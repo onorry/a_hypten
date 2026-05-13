@@ -627,4 +627,32 @@ h3 {
   h2 {
     font-size: 26px;
   }
+.pressure-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: #d7dbe7;
+}
+
+.input-group input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #2f3547;
+  background: #151924;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-color: #4d8dff;
+}
 }

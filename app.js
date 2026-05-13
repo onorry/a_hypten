@@ -21,6 +21,7 @@ let analysisHistory = [];
 let currentQuestion = null;
 let selectedSymptoms = [];
 let answers = [];
+let pressureData = null;
 
 function buildNodesById(data) {
   const map = {};
@@ -37,6 +38,30 @@ function getClassIdByName(name) {
   return node ? node.id : null;
 }
 
+function getNodeByName(name) {
+  if (!ontologyData) return null;
+  return ontologyData.nodes.find(n => n.name.toLowerCase() === name.toLowerCase()) || null;
+}
+
+function addSymptomByName(name) {
+  const node = getNodeByName(name);
+
+  if (!node) {
+    console.warn(`Симптом не найден в онтологии: ${name}`);
+    return;
+  }
+
+  if (!selectedSymptoms.includes(node.name)) {
+    selectedSymptoms.push(node.name);
+  }
+}
+
+function updateSelectedSymptomsView() {
+  selectedList.innerHTML = selectedSymptoms.length
+    ? selectedSymptoms.map(item => `<li>${item}</li>`).join('')
+    : '<li>Пока симптомы не выявлены</li>';
+}
+
 function getStartQuestion() {
   const startRelation = ontologyData.relations.find(
     r => r.name === 'start_question'
@@ -50,28 +75,118 @@ function getStartQuestion() {
 function startQuestionnaire() {
   selectedSymptoms = [];
   answers = [];
+  pressureData = null;
+  currentQuestion = null;
+
+  openScreen('symptoms');
+
+  const pressureForm = document.getElementById('pressureForm');
+  const questionBox = document.getElementById('questionBox');
+  const systolicInput = document.getElementById('systolicInput');
+  const diastolicInput = document.getElementById('diastolicInput');
+
+  if (pressureForm) pressureForm.style.display = 'block';
+
+  if (systolicInput) systolicInput.value = '';
+  if (diastolicInput) diastolicInput.value = '';
+
+  if (questionBox) {
+    questionBox.innerHTML = `
+      <p class="text">
+        Сначала введите показатели артериального давления,
+        затем система продолжит анализ по вопросам.
+      </p>
+    `;
+  }
+
+  statusBox.className = 'status-box success';
+  statusTitle.textContent = 'Анализ еще не выполнен';
+  statusText.textContent = 'Введите верхнее и нижнее давление, чтобы начать анализ.';
+
+  selectedList.innerHTML = '<li>Пока симптомы не выявлены</li>';
+  recommendationList.innerHTML = '<li>Рекомендации появятся после завершения анализа.</li>';
+}
+
+function startPressureAnalysis() {
+  const systolicInput = document.getElementById('systolicInput');
+  const diastolicInput = document.getElementById('diastolicInput');
+  const pressureForm = document.getElementById('pressureForm');
+
+  const systolic = Number(systolicInput?.value);
+  const diastolic = Number(diastolicInput?.value);
+
+  if (!systolic || !diastolic || systolic < 40 || diastolic < 30) {
+    statusBox.className = 'status-box warning';
+    statusTitle.textContent = 'Некорректные данные давления';
+    statusText.textContent = 'Введите верхнее и нижнее давление числом, например 140 и 90.';
+    return;
+  }
+
+  pressureData = {
+    systolic,
+    diastolic,
+    category: classifyPressure(systolic, diastolic)
+  };
+
+  applyPressureSymptoms(pressureData);
+  updateSelectedSymptomsView();
+
+  if (pressureForm) pressureForm.style.display = 'none';
 
   currentQuestion = getStartQuestion();
 
   if (!currentQuestion) {
     console.warn('Стартовый вопрос не найден');
+    finishQuestionnaire();
     return;
   }
 
-  openScreen('symptoms');
+  statusBox.className = pressureData.category === 'crisis'
+    ? 'status-box warning'
+    : 'status-box success';
+
+  statusTitle.textContent = 'Давление обработано';
+  statusText.textContent = `Введено АД: ${systolic}/${diastolic} мм рт. ст. Далее ответьте на уточняющие вопросы.`;
 
   renderQuestion(currentQuestion);
+}
 
-  statusBox.className = 'status-box success';
-  statusTitle.textContent = 'Анализ начат';
-  statusText.textContent =
-    'Ответьте на вопросы, чтобы система определила возможное состояние.';
+function classifyPressure(systolic, diastolic) {
+  if (systolic >= 180 || diastolic >= 120) return 'crisis';
+  if (systolic >= 140 || diastolic >= 90) return 'high';
+  if (systolic < 90 || diastolic < 60) return 'low';
+  return 'normal';
+}
 
-  selectedList.innerHTML =
-    '<li>Пока симптомы не выявлены</li>';
+function applyPressureSymptoms(data) {
+  const { systolic, diastolic, category } = data;
 
-  recommendationList.innerHTML =
-    '<li>Рекомендации появятся после завершения анализа.</li>';
+  if (category === 'crisis') {
+    addSymptomByName('Крайне высокое АД');
+
+    if (systolic >= 180) {
+      addSymptomByName('Крайне высокое верхнее АД');
+    }
+
+    if (diastolic >= 120) {
+      addSymptomByName('Крайне высокое нижнее АД');
+    }
+
+    return;
+  }
+
+  if (category === 'high') {
+    addSymptomByName('Высокое давление');
+    return;
+  }
+
+  if (category === 'low') {
+    addSymptomByName('Низкое АД');
+    addSymptomByName('Крайне низкое АД');
+    return;
+  }
+
+  addSymptomByName('Нормальное АД');
 }
 
 function renderQuestion(question) {
@@ -79,6 +194,11 @@ function renderQuestion(question) {
 
   if (!questionBox) {
     console.error('Не найден questionBox');
+    return;
+  }
+
+  if (!question || question.name === 'Завершить опрос и выполнить анализ') {
+    finishQuestionnaire();
     return;
   }
 
@@ -108,29 +228,25 @@ function answerQuestion(answer) {
   });
 
   if (answer === 'yes') {
-    const symptomRelation = ontologyData.relations.find(r =>
+    const symptomRelations = ontologyData.relations.filter(r =>
       r.source_node_id === currentQuestion.id &&
       r.name === 'detects_symptom'
     );
 
-    if (symptomRelation) {
-      const symptom =
-        ontologyNodesById[symptomRelation.destination_node_id];
+    symptomRelations.forEach(relation => {
+      const symptom = ontologyNodesById[relation.destination_node_id];
 
       if (symptom && !selectedSymptoms.includes(symptom.name)) {
         selectedSymptoms.push(symptom.name);
       }
-    }
+    });
   }
 
-  selectedList.innerHTML = selectedSymptoms.length
-    ? selectedSymptoms.map(item => `<li>${item}</li>`).join('')
-    : '<li>Пока симптомы не выявлены</li>';
+  updateSelectedSymptomsView();
 
-  const nextRelationName =
-    answer === 'yes'
-      ? 'next_if_yes'
-      : 'next_if_no';
+  const nextRelationName = answer === 'yes'
+    ? 'next_if_yes'
+    : 'next_if_no';
 
   const nextRelation = ontologyData.relations.find(r =>
     r.source_node_id === currentQuestion.id &&
@@ -138,9 +254,7 @@ function answerQuestion(answer) {
   );
 
   if (nextRelation) {
-    currentQuestion =
-      ontologyNodesById[nextRelation.destination_node_id];
-
+    currentQuestion = ontologyNodesById[nextRelation.destination_node_id];
     renderQuestion(currentQuestion);
   } else {
     finishQuestionnaire();
@@ -150,12 +264,14 @@ function answerQuestion(answer) {
 function finishQuestionnaire() {
   const questionBox = document.getElementById('questionBox');
 
-  questionBox.innerHTML = `
-    <h3>Анализ завершён</h3>
-    <p class="text">
-      Результат сформирован на основе ваших ответов.
-    </p>
-  `;
+  if (questionBox) {
+    questionBox.innerHTML = `
+      <h3>Анализ завершён</h3>
+      <p class="text">
+        Результат сформирован на основе введённого давления и ваших ответов.
+      </p>
+    `;
+  }
 
   analyzeQuestionnaireResult();
 }
@@ -185,9 +301,7 @@ function buildSyndromeMap() {
           r.name === 'symptom' &&
           r.source_node_id === id
         )
-        .map(r =>
-          ontologyNodesById[r.destination_node_id]?.name
-        )
+        .map(r => ontologyNodesById[r.destination_node_id]?.name)
         .filter(Boolean);
 
       return {
@@ -200,22 +314,21 @@ function buildSyndromeMap() {
 }
 
 function findDiagnosesBySymptoms(selected) {
-  const normalizedSelected =
-    selected.map(s => s.toLowerCase());
+  const normalizedSelected = selected.map(s => s.toLowerCase());
 
   const results = syndromeMap.map(syndrome => {
     const syndromeSymptoms = syndrome.symptoms;
 
-    const matchedSymptoms =
-      syndromeSymptoms.filter(symptom =>
-        normalizedSelected.includes(symptom.toLowerCase())
-      );
+    const matchedSymptoms = syndromeSymptoms.filter(symptom =>
+      normalizedSelected.includes(symptom.toLowerCase())
+    );
 
     const matchCount = matchedSymptoms.length;
     const total = syndromeSymptoms.length || 1;
     const score = matchCount / total;
 
     return {
+      id: syndrome.id,
       name: syndrome.name,
       allSymptoms: syndromeSymptoms,
       matchedSymptoms,
@@ -228,66 +341,100 @@ function findDiagnosesBySymptoms(selected) {
   return results
     .filter(item => item.matchCount > 0)
     .sort((a, b) => {
-      if (b.score !== a.score)
-        return b.score - a.score;
-
-      if (b.matchCount !== a.matchCount)
-        return b.matchCount - a.matchCount;
-
+      if (b.score !== a.score) return b.score - a.score;
+      if (b.matchCount !== a.matchCount) return b.matchCount - a.matchCount;
       return a.name.localeCompare(b.name, 'ru');
     });
 }
 
-function getRecommendationsByDiagnosis(name) {
+function getRecommendationsFromOntology(syndromeId) {
+  if (!ontologyData) return [];
+
+  const recommendationRelations = ontologyData.relations.filter(r =>
+    r.source_node_id === syndromeId &&
+    r.name === 'recommendation'
+  );
+
+  return recommendationRelations
+    .map(relation => ontologyNodesById[relation.destination_node_id])
+    .filter(Boolean)
+    .map(node => node.attributes?.text || node.name)
+    .filter(Boolean);
+}
+
+function getFallbackRecommendations(name) {
   const lower = name.toLowerCase();
 
-  if (lower.includes('криз')) {
+  if (lower.includes('криз') || lower.includes('экстр')) {
     return [
-      'Немедленно обратиться за медицинской помощью.',
-      'Избегать физической нагрузки.',
-      'Контролировать давление.'
+      'Результат не является диагнозом. При выраженном ухудшении состояния необходимо срочно обратиться за медицинской помощью.',
+      'Не откладывайте обращение к специалисту при боли в груди, одышке, нарушении речи, слабости или спутанности сознания.',
+      'До консультации специалиста избегайте физической нагрузки и повторно проконтролируйте давление.'
     ];
   }
 
-  if (lower.includes('энцефалопат')) {
+  if (lower.includes('энцефалопат') || lower.includes('невролог')) {
     return [
-      'Как можно скорее обратиться к врачу.',
-      'Контролировать неврологические симптомы.'
+      'Результат носит справочный характер и не заменяет консультацию врача.',
+      'При нарушении сознания, судорогах, слабости или нарушении речи рекомендуется срочно обратиться за медицинской помощью.'
+    ];
+  }
+
+  if (lower.includes('ретинопат') || lower.includes('офтальмолог')) {
+    return [
+      'При изменениях зрения рекомендуется обратиться к врачу для очной оценки состояния.',
+      'Сохраните результат анализа и данные давления для последующего наблюдения.'
     ];
   }
 
   return [
-    'Использовать результат как вспомогательную информацию.',
-    'При ухудшении состояния обратиться к врачу.'
+    'Результат является предварительной оценкой и не является диагнозом.',
+    'При повторении или усилении симптомов рекомендуется обратиться к врачу.',
+    'Сохраните результат анализа для наблюдения в динамике.'
   ];
 }
 
 function analyzeQuestionnaireResult() {
   const found = findDiagnosesBySymptoms(selectedSymptoms);
 
+  updateSelectedSymptomsView();
+
   if (!found.length) {
-    statusTitle.textContent =
-      'Подходящее состояние не определено';
-
-    statusText.textContent =
-      'По результатам опроса точное совпадение не найдено.';
-
-    recommendationList.innerHTML =
-      '<li>При ухудшении состояния обратитесь к врачу.</li>';
-
+    statusBox.className = 'status-box success';
+    statusTitle.textContent = 'Подходящее состояние не определено';
+    statusText.textContent = 'По результатам анализа точное совпадение не найдено.';
+    recommendationList.innerHTML = '<li>При ухудшении состояния обратитесь к врачу.</li>';
+    addHistoryItem('Подходящее состояние не определено', selectedSymptoms);
     return;
   }
 
   const best = found[0];
+  const alternatives = found.slice(1, 4);
 
-  statusTitle.textContent =
-    `Наиболее вероятное состояние: ${best.name}`;
+  statusBox.className = best.score >= 0.5
+    ? 'status-box warning'
+    : 'status-box success';
+
+  statusTitle.textContent = `Наиболее вероятное состояние: ${best.name}`;
+
+  const pressureText = pressureData
+    ? ` Введённое АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст.`
+    : '';
 
   statusText.textContent =
-    `Совпало симптомов: ${best.matchCount} из ${best.total}.`;
+    `Совпало симптомов: ${best.matchCount} из ${best.total}.${pressureText}`;
 
-  const recommendations =
-    getRecommendationsByDiagnosis(best.name);
+  let recommendations = getRecommendationsFromOntology(best.id);
+
+  if (!recommendations.length) {
+    recommendations = getFallbackRecommendations(best.name);
+  }
+
+  if (alternatives.length) {
+    recommendations.push(
+      `Также по части признаков подходят: ${alternatives.map(item => item.name).join(', ')}.`
+    );
+  }
 
   recommendationList.innerHTML = recommendations
     .map(item => `<li>${item}</li>`)
@@ -388,6 +535,7 @@ function addHistoryItem(diagnosis, symptoms) {
   analysisHistory.push({
     diagnosis,
     symptoms,
+    pressure: pressureData,
     date: new Date().toISOString()
   });
 
@@ -405,13 +553,12 @@ async function loadOntology() {
   try {
     const response = await fetch('ontology2.json');
 
-    if (!response.ok)
+    if (!response.ok) {
       throw new Error('Не удалось загрузить ontology2.json');
+    }
 
     ontologyData = await response.json();
-
     ontologyNodesById = buildNodesById(ontologyData);
-
     syndromeMap = buildSyndromeMap();
 
     if (symptomCountStat) {
@@ -424,6 +571,10 @@ async function loadOntology() {
     }
   } catch (error) {
     console.error(error);
+
+    if (ontologyInfo) {
+      ontologyInfo.textContent = 'Ошибка загрузки онтологии';
+    }
   }
 }
 
