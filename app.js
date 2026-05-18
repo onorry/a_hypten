@@ -735,152 +735,277 @@ async function loadOntology() {
   }
 }
 
+let currentOntologyTab = 'syndromes';
+
 function openOntologyViewer() {
-  const modal =
-    document.getElementById(
-      'ontologyModal'
-    );
+  const modal = document.getElementById('ontologyModal');
 
-  const content =
-    document.getElementById(
-      'ontologyViewerContent'
-    );
-
-  if (!modal || !content || !ontologyData) {
-    return;
-  }
-
-  const syndromeClassId =
-    getClassIdByName('# Синдром');
-
-  const symptomClassId =
-    getClassIdByName('# Симптом');
-
-  const syndromes =
-    ontologyData.relations
-      .filter(r =>
-        r.name === 'is_a' &&
-        r.destination_node_id === syndromeClassId
-      )
-      .map(
-        r =>
-          ontologyNodesById[
-            r.source_node_id
-          ]
-      )
-      .filter(Boolean);
-
-  const symptoms =
-    ontologyData.relations
-      .filter(r =>
-        r.name === 'is_a' &&
-        r.destination_node_id === symptomClassId
-      )
-      .map(
-        r =>
-          ontologyNodesById[
-            r.source_node_id
-          ]
-      )
-      .filter(Boolean);
-
-  const pressureRanges =
-    ontologyData.nodes.filter(
-      node =>
-        node.attributes?.type ===
-        'pressure_range'
-    );
-
-  content.innerHTML = `
-    <div class="ontology-section">
-
-      <h3>Синдромы</h3>
-
-      ${syndromes.map(syndrome => {
-
-        const syndromeSymptoms =
-          ontologyData.relations
-            .filter(r =>
-              r.name === 'symptom' &&
-              r.source_node_id === syndrome.id
-            )
-            .map(r =>
-              ontologyNodesById[
-                r.destination_node_id
-              ]?.name
-            )
-            .filter(Boolean);
-
-        return `
-          <div class="ontology-card">
-
-            <h4>${syndrome.name}</h4>
-
-            <div class="ontology-subtitle">
-              Симптомы
-            </div>
-
-            <ul>
-              ${syndromeSymptoms
-                .map(item => `<li>${item}</li>`)
-                .join('')}
-            </ul>
-
-          </div>
-        `;
-      }).join('')}
-
-    </div>
-
-    <div class="ontology-section">
-
-      <h3>Диапазоны давления</h3>
-
-      ${pressureRanges.map(range => `
-        <div class="ontology-card">
-
-          <h4>${range.name}</h4>
-
-          <p>
-            ${range.attributes?.min || '0'}
-            —
-            ${range.attributes?.max || '∞'}
-          </p>
-
-        </div>
-      `).join('')}
-
-    </div>
-
-    <div class="ontology-section">
-
-      <h3>Симптомы</h3>
-
-      <div class="ontology-tags">
-
-        ${symptoms.map(symptom => `
-          <span class="ontology-tag">
-            ${symptom.name}
-          </span>
-        `).join('')}
-
-      </div>
-
-    </div>
-  `;
+  if (!modal || !ontologyData) return;
 
   modal.classList.add('open');
+  renderOntologyTab('syndromes');
 }
 
 function closeOntologyViewer() {
-  const modal =
-    document.getElementById(
-      'ontologyModal'
-    );
+  const modal = document.getElementById('ontologyModal');
 
   if (modal) {
     modal.classList.remove('open');
   }
+}
+
+function renderOntologyTab(tabName) {
+  currentOntologyTab = tabName;
+
+  const content = document.getElementById('ontologyViewerContent');
+  const tabs = document.querySelectorAll('.ontology-tab');
+
+  if (!content || !ontologyData) return;
+
+  tabs.forEach(tab => {
+    tab.classList.toggle(
+      'active',
+      tab.dataset.ontologyTab === tabName
+    );
+  });
+
+  if (tabName === 'syndromes') {
+    renderOntologySyndromes(content);
+  }
+
+  if (tabName === 'pressure') {
+    renderOntologyPressure(content);
+  }
+
+  if (tabName === 'questions') {
+    renderOntologyQuestions(content);
+  }
+
+  if (tabName === 'symptoms') {
+    renderOntologySymptoms(content);
+  }
+}
+
+function renderOntologySyndromes(content) {
+  const syndromeClassId = getClassIdByName('# Синдром');
+
+  const syndromes = ontologyData.relations
+    .filter(r =>
+      r.name === 'is_a' &&
+      r.destination_node_id === syndromeClassId
+    )
+    .map(r => ontologyNodesById[r.source_node_id])
+    .filter(Boolean);
+
+  content.innerHTML = `
+    <div class="ontology-section">
+      <h3>Синдромы</h3>
+
+      <div class="ontology-section-list">
+        ${syndromes.map(syndrome => {
+          const syndromeSymptoms = ontologyData.relations
+            .filter(r =>
+              r.name === 'symptom' &&
+              r.source_node_id === syndrome.id
+            )
+            .map(r => ontologyNodesById[r.destination_node_id]?.name)
+            .filter(Boolean);
+
+          const recommendations = ontologyData.relations
+            .filter(r =>
+              r.name === 'recommendation' &&
+              r.source_node_id === syndrome.id
+            )
+            .map(r => ontologyNodesById[r.destination_node_id])
+            .filter(Boolean)
+            .map(node => node.attributes?.text || node.name);
+
+          return `
+            <div class="ontology-item">
+              <p class="ontology-item-title">${syndrome.name}</p>
+
+              <p class="ontology-item-meta">Связанные симптомы:</p>
+
+              <div class="ontology-tags">
+                ${syndromeSymptoms.length
+                  ? syndromeSymptoms.map(item => `
+                    <span class="ontology-tag">${item}</span>
+                  `).join('')
+                  : '<span class="ontology-tag">Нет связанных симптомов</span>'
+                }
+              </div>
+
+              <p class="ontology-item-meta" style="margin-top:12px;">
+                Рекомендации:
+              </p>
+
+              <ul class="clean-list">
+                ${recommendations.length
+                  ? recommendations.map(item => `<li>${item}</li>`).join('')
+                  : '<li>Рекомендации не указаны</li>'
+                }
+              </ul>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderOntologyPressure(content) {
+  const pressureRanges = ontologyData.nodes.filter(node => {
+    const attrs = node.attributes || {};
+    const name = node.name.toLowerCase();
+
+    return (
+      attrs.type === 'pressure_range' ||
+      name.includes('систол') ||
+      name.includes('диастол') ||
+      name.includes('давлен') ||
+      name.includes('ад')
+    );
+  });
+
+  content.innerHTML = `
+    <div class="ontology-section">
+      <h3>Диапазоны давления</h3>
+
+      <div class="ontology-section-list">
+        ${pressureRanges.length
+          ? pressureRanges.map(range => {
+            const attrs = range.attributes || {};
+
+            return `
+              <div class="ontology-item">
+                <p class="ontology-item-title">${range.name}</p>
+
+                <p class="ontology-item-meta">
+                  Тип давления: ${attrs.kind || 'не указан'}
+                </p>
+
+                <p class="ontology-item-meta">
+                  Минимальное значение: ${attrs.min || '—'}
+                </p>
+
+                <p class="ontology-item-meta">
+                  Максимальное значение: ${attrs.max || '—'}
+                </p>
+
+                <p class="ontology-item-meta">
+                  Категория: ${attrs.category || '—'}
+                </p>
+              </div>
+            `;
+          }).join('')
+          : `
+            <div class="ontology-item">
+              <p class="ontology-item-title">
+                Диапазоны давления не найдены
+              </p>
+              <p class="ontology-item-meta">
+                Проверьте, что в узлах онтологии есть атрибут
+                type: pressure_range.
+              </p>
+            </div>
+          `
+        }
+      </div>
+    </div>
+  `;
+}
+
+function renderOntologyQuestions(content) {
+  const questions = ontologyData.nodes.filter(node =>
+    ontologyData.relations.some(r =>
+      r.source_node_id === node.id &&
+      (
+        r.name === 'next_if_yes' ||
+        r.name === 'next_if_no'
+      )
+    )
+  );
+
+  content.innerHTML = `
+    <div class="ontology-section">
+      <h3>Вопросы</h3>
+
+      <div class="ontology-section-list">
+        ${questions.map(question => {
+          const yesRelation = ontologyData.relations.find(r =>
+            r.source_node_id === question.id &&
+            r.name === 'next_if_yes'
+          );
+
+          const noRelation = ontologyData.relations.find(r =>
+            r.source_node_id === question.id &&
+            r.name === 'next_if_no'
+          );
+
+          const symptomRelations = ontologyData.relations
+            .filter(r =>
+              r.source_node_id === question.id &&
+              r.name === 'detects_symptom'
+            )
+            .map(r => ontologyNodesById[r.destination_node_id]?.name)
+            .filter(Boolean);
+
+          return `
+            <div class="ontology-item">
+              <p class="ontology-item-title">${question.name}</p>
+
+              <p class="ontology-item-meta">
+                При ответе «Да» →
+                ${yesRelation
+                  ? ontologyNodesById[yesRelation.destination_node_id]?.name
+                  : 'завершение анализа'}
+              </p>
+
+              <p class="ontology-item-meta">
+                При ответе «Нет» →
+                ${noRelation
+                  ? ontologyNodesById[noRelation.destination_node_id]?.name
+                  : 'завершение анализа'}
+              </p>
+
+              <div class="ontology-tags">
+                ${symptomRelations.length
+                  ? symptomRelations.map(item => `
+                    <span class="ontology-tag">${item}</span>
+                  `).join('')
+                  : '<span class="ontology-tag">Симптом не указан</span>'
+                }
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderOntologySymptoms(content) {
+  const symptomClassId = getClassIdByName('# Симптом');
+
+  const symptoms = ontologyData.relations
+    .filter(r =>
+      r.name === 'is_a' &&
+      r.destination_node_id === symptomClassId
+    )
+    .map(r => ontologyNodesById[r.source_node_id])
+    .filter(Boolean);
+
+  content.innerHTML = `
+    <div class="ontology-section">
+      <h3>Симптомы</h3>
+
+      <div class="ontology-tags">
+        ${symptoms.map(symptom => `
+          <span class="ontology-tag">${symptom.name}</span>
+        `).join('')}
+      </div>
+    </div>
+  `;
 }
 
 loadHistoryFromStorage();
