@@ -9,6 +9,21 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+const users = [
+  {
+    login: 'doctor',
+    password: 'doctor123',
+    role: 'doctor',
+    name: 'Врач'
+  },
+  {
+    login: 'user',
+    password: 'user123',
+    role: 'user',
+    name: 'Пользователь'
+  }
+];
+
 function loadOntology() {
   const filePath = path.join(__dirname, 'ontology2.json');
   const raw = fs.readFileSync(filePath, 'utf-8');
@@ -28,6 +43,27 @@ app.get('/api/ontology', (req, res) => {
       error: 'Не удалось загрузить онтологию'
     });
   }
+});
+
+app.post('/api/login', (req, res) => {
+  const { login, password } = req.body;
+
+  const user = users.find(item =>
+    item.login === login &&
+    item.password === password
+  );
+
+  if (!user) {
+    return res.status(401).json({
+      error: 'Неверный логин или пароль'
+    });
+  }
+
+  res.json({
+    login: user.login,
+    role: user.role,
+    name: user.name
+  });
 });
 
 app.listen(PORT, () => {
