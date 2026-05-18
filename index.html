@@ -110,15 +110,40 @@
   <h3>Анализ состояния</h3>
 
   <p class="text" style="margin-bottom:16px;">
-    Ответьте на несколько вопросов.
-    Система определит возможное состояние
-    на основе онтологической модели.
+    Введите показатели артериального давления.
+    После этого система продолжит анализ
+    по онтологической модели.
   </p>
+
+  <div class="pressure-panel" id="pressureForm">
+    <div class="pressure-head">
+      <h4>Показатели давления</h4>
+      <p>Введите верхнее и нижнее давление в мм рт. ст.</p>
+    </div>
+
+    <div class="pressure-inputs">
+      <label class="pressure-field">
+        <span>Верхнее давление</span>
+        <input type="number" id="systolicInput" placeholder="120">
+      </label>
+
+      <label class="pressure-field">
+        <span>Нижнее давление</span>
+        <input type="number" id="diastolicInput" placeholder="80">
+      </label>
+    </div>
+
+    <button
+      class="btn btn-primary pressure-button"
+      onclick="startPressureAnalysis()"
+    >
+      Продолжить анализ
+    </button>
+  </div>
 
   <div id="questionBox">
     <p class="text">
-      Нажмите «Начать анализ»,
-      чтобы запустить проверку состояния.
+      После ввода давления начнётся последовательный анализ симптомов.
     </p>
   </div>
 </div>
