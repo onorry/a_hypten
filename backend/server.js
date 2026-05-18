@@ -40,7 +40,9 @@ app.get('/api/ontology', (req, res) => {
     res.json(ontology);
   } catch (error) {
     res.status(500).json({
-      error: 'Не удалось загрузить онтологию'
+      error: 'Не удалось загрузить онтологию',
+      details: error.message,
+      directory: __dirname
     });
   }
 });
