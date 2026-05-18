@@ -23,6 +23,13 @@
         </div>
       </header>
 
+<div class="card">
+  <h3>Опрос</h3>
+  <p class="text">Ответьте на вопросы для анализа состояния.</p>
+
+  <div id="questionBox"></div>
+</div>
+
       <div class="desktop-layout">
         <aside class="sidebar">
           <div class="sidebar-title">Навигация</div>
@@ -61,6 +68,7 @@
               <div class="hero-actions">
                 <button class="btn btn-primary" onclick="startQuestionnaire()">Начать анализ</button>
                 <button class="btn btn-secondary" onclick="openScreen('history')">Открыть историю</button>
+                <button class="btn btn-secondary" onclick="openOntologyViewer()">Просмотр онтологии</button>
               </div>
             </div>
 
@@ -86,59 +94,15 @@
   <h3>Анализ состояния</h3>
 
   <p class="text" style="margin-bottom:16px;">
-    Введите показатели артериального давления.
-    После этого система продолжит анализ
-    по онтологической модели.
+    Ответьте на несколько вопросов.
+    Система определит возможное состояние
+    на основе онтологической модели.
   </p>
-
-  <div class="pressure-panel" id="pressureForm">
-
-  <div class="pressure-head">
-    <h4>Показатели давления</h4>
-
-    <p>
-      Введите верхнее и нижнее давление
-      в мм рт. ст.
-    </p>
-  </div>
-
-  <div class="pressure-inputs">
-
-    <label class="pressure-field">
-      <span>Верхнее давление</span>
-
-      <input
-        type="number"
-        id="systolicInput"
-        placeholder="120"
-      >
-    </label>
-
-    <label class="pressure-field">
-      <span>Нижнее давление</span>
-
-      <input
-        type="number"
-        id="diastolicInput"
-        placeholder="80"
-      >
-    </label>
-
-  </div>
-
-  <button
-    class="btn btn-primary pressure-button"
-    onclick="startPressureAnalysis()"
-  >
-    Продолжить анализ
-  </button>
-
-</div>
 
   <div id="questionBox">
     <p class="text">
-      После ввода давления начнётся
-      последовательный анализ симптомов.
+      Нажмите «Начать анализ»,
+      чтобы запустить проверку состояния.
     </p>
   </div>
 </div>
@@ -229,7 +193,7 @@
       </div>
 
       <nav class="mobile-nav">
-        <button class="mobile-btn active" data-screen="home" onclick="openScreen('home')">
+        <button class="mobile-btn active" data-screen="home" onclick="startQuestionnaire()">
           <span class="mobile-icon">⌂</span>
           <span>Главная</span>
         </button>
@@ -246,6 +210,34 @@
           <span>Профиль</span>
         </button>
       </nav>
+    </div>
+  </div>
+
+
+  <div class="ontology-modal" id="ontologyModal" aria-hidden="true">
+    <div class="ontology-backdrop" onclick="closeOntologyViewer()"></div>
+
+    <div class="ontology-dialog" role="dialog" aria-modal="true" aria-labelledby="ontologyModalTitle">
+      <div class="ontology-dialog-header">
+        <div>
+          <p class="ontology-kicker">Режим специалиста</p>
+          <h3 id="ontologyModalTitle">Просмотр онтологической модели</h3>
+          <p class="text">Структура симптомов, синдромов, диапазонов давления и рекомендаций.</p>
+        </div>
+
+        <button class="ontology-close" onclick="closeOntologyViewer()" aria-label="Закрыть окно">×</button>
+      </div>
+
+      <div class="ontology-tabs">
+        <button class="ontology-tab active" data-ontology-tab="syndromes" onclick="renderOntologyTab('syndromes')">Синдромы</button>
+        <button class="ontology-tab" data-ontology-tab="pressure" onclick="renderOntologyTab('pressure')">Диапазоны АД</button>
+        <button class="ontology-tab" data-ontology-tab="questions" onclick="renderOntologyTab('questions')">Вопросы</button>
+        <button class="ontology-tab" data-ontology-tab="symptoms" onclick="renderOntologyTab('symptoms')">Симптомы</button>
+      </div>
+
+      <div class="ontology-content" id="ontologyViewerContent">
+        <p class="text">Онтология ещё не загружена.</p>
+      </div>
     </div>
   </div>
 
