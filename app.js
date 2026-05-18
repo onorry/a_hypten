@@ -1027,6 +1027,42 @@ function loadUserFromStorage() {
   updateAuthView();
 }
 
+let currentUser = null;
+
+function openLoginModal() {
+  const modal = document.getElementById('loginModal');
+
+  if (modal) {
+    modal.classList.add('open');
+  }
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById('loginModal');
+
+  if (modal) {
+    modal.classList.remove('open');
+  }
+}
+
+function loadUserFromStorage() {
+  const raw = localStorage.getItem('ahypten_user');
+
+  if (!raw) {
+    currentUser = null;
+    updateAuthView();
+    return;
+  }
+
+  try {
+    currentUser = JSON.parse(raw);
+  } catch {
+    currentUser = null;
+  }
+
+  updateAuthView();
+}
+
 async function loginUser() {
   const loginInput = document.getElementById('loginInput');
   const passwordInput = document.getElementById('passwordInput');
@@ -1036,7 +1072,9 @@ async function loginUser() {
   const password = passwordInput?.value.trim();
 
   if (!login || !password) {
-    loginStatus.textContent = 'Введите логин и пароль.';
+    if (loginStatus) {
+      loginStatus.textContent = 'Введите логин и пароль.';
+    }
     return;
   }
 
@@ -1061,6 +1099,7 @@ async function loginUser() {
     );
 
     updateAuthView();
+    closeLoginModal();
   } catch (error) {
     currentUser = null;
     localStorage.removeItem('ahypten_user');
@@ -1068,6 +1107,8 @@ async function loginUser() {
     if (loginStatus) {
       loginStatus.textContent = 'Неверный логин или пароль.';
     }
+
+    updateAuthView();
   }
 }
 
@@ -1078,13 +1119,30 @@ function logoutUser() {
 }
 
 function updateAuthView() {
-  const loginStatus = document.getElementById('loginStatus');
+  const authStatus = document.getElementById('authStatus');
+  const loginOpenButton = document.getElementById('loginOpenButton');
+  const logoutButton = document.getElementById('logoutButton');
   const doctorButtons = document.querySelectorAll('.doctor-only');
+  const loginStatus = document.getElementById('loginStatus');
+
+  if (authStatus) {
+    authStatus.textContent = currentUser
+      ? `${currentUser.name} (${currentUser.role})`
+      : 'Не выполнен вход';
+  }
 
   if (loginStatus) {
     loginStatus.textContent = currentUser
       ? `Вы вошли как: ${currentUser.name} (${currentUser.role})`
       : 'Пользователь не авторизован.';
+  }
+
+  if (loginOpenButton) {
+    loginOpenButton.style.display = currentUser ? 'none' : 'inline-flex';
+  }
+
+  if (logoutButton) {
+    logoutButton.style.display = currentUser ? 'inline-flex' : 'none';
   }
 
   doctorButtons.forEach(button => {

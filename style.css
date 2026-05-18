@@ -938,3 +938,83 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+
+.auth-header {
+  gap: 12px;
+}
+
+.auth-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 10px 14px;
+  background: rgba(47, 128, 237, 0.10);
+  color: var(--primary);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  background: rgba(47, 128, 237, 0.16);
+}
+
+.login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-modal.open {
+  display: flex;
+}
+
+.login-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 24, 38, 0.46);
+  backdrop-filter: blur(8px);
+}
+
+.login-dialog {
+  position: relative;
+  width: min(420px, 100%);
+  background: rgba(255, 255, 255, 0.96);
+  border: var(--border);
+  border-radius: 28px;
+  box-shadow: 0 28px 70px rgba(23, 42, 69, 0.28);
+  overflow: hidden;
+}
+
+.login-dialog-header {
+  padding: 22px;
+  border-bottom: var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.login-dialog-body {
+  padding: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.login-dialog-body input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(24, 49, 83, 0.10);
+  background: white;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.login-dialog-body input:focus {
+  border-color: rgba(47, 128, 237, 0.35);
+  box-shadow: 0 0 0 4px rgba(47, 128, 237, 0.08);
+}

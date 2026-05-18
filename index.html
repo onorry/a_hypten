@@ -17,10 +17,27 @@
             <p class="brand-subtitle">Анализ симптомов и рекомендации</p>
           </div>
         </div>
-        <div class="header-meta">
-          <span class="status-dot"></span>
-          <span>Система активна</span>
-        </div>
+        <div class="header-meta auth-header">
+  <span class="status-dot"></span>
+  <span id="authStatus">Не выполнен вход</span>
+
+  <button
+    class="auth-btn"
+    id="loginOpenButton"
+    onclick="openLoginModal()"
+  >
+    Войти
+  </button>
+
+  <button
+    class="auth-btn"
+    id="logoutButton"
+    onclick="logoutUser()"
+    style="display:none;"
+  >
+    Выйти
+  </button>
+</div>
       </header>
 
       <div class="desktop-layout">
@@ -69,28 +86,6 @@
   >
     Просмотр онтологии
   </button>
-</div>
-
-<div class="login-panel" id="loginPanel">
-  <h3>Вход в систему</h3>
-
-  <p class="text">
-    Войдите как пользователь или врач.
-  </p>
-
-  <div class="login-fields">
-    <input id="loginInput" type="text" placeholder="Логин">
-    <input id="passwordInput" type="password" placeholder="Пароль">
-  </div>
-
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="loginUser()">Войти</button>
-    <button class="btn btn-secondary" onclick="logoutUser()">Выйти</button>
-  </div>
-
-  <p class="text" id="loginStatus">
-    Пользователь не авторизован.
-  </p>
 </div>
 
             <div class="stats-grid">
@@ -261,6 +256,35 @@
       </div>
     </div>
   </div>
+
+<div class="login-modal" id="loginModal">
+  <div class="login-backdrop" onclick="closeLoginModal()"></div>
+
+  <div class="login-dialog">
+    <div class="login-dialog-header">
+      <div>
+        <p class="ontology-kicker">Авторизация</p>
+        <h3>Вход в систему</h3>
+        <p class="text">Введите логин и пароль для выбора роли.</p>
+      </div>
+
+      <button class="ontology-close" onclick="closeLoginModal()">×</button>
+    </div>
+
+    <div class="login-dialog-body">
+      <input id="loginInput" type="text" placeholder="Логин">
+      <input id="passwordInput" type="password" placeholder="Пароль">
+
+      <button class="btn btn-primary" onclick="loginUser()">
+        Войти
+      </button>
+
+      <p class="text" id="loginStatus">
+        Пользователь не авторизован.
+      </p>
+    </div>
+  </div>
+</div>
 
   <script src="app.js" defer></script>
 </body>
