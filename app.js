@@ -1009,26 +1009,6 @@ function renderOntologySymptoms(content) {
 
 let currentUser = null;
 
-function loadUserFromStorage() {
-  const raw = localStorage.getItem('ahypten_user');
-
-  if (!raw) {
-    currentUser = null;
-    updateAuthView();
-    return;
-  }
-
-  try {
-    currentUser = JSON.parse(raw);
-  } catch {
-    currentUser = null;
-  }
-
-  updateAuthView();
-}
-
-let currentUser = null;
-
 function openLoginModal() {
   const modal = document.getElementById('loginModal');
 
