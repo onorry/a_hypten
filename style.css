@@ -901,3 +901,40 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.login-panel {
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.72);
+  border: var(--border);
+}
+
+.login-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.login-fields input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(24, 49, 83, 0.10);
+  background: white;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.login-fields input:focus {
+  border-color: rgba(47, 128, 237, 0.35);
+  box-shadow: 0 0 0 4px rgba(47, 128, 237, 0.08);
+}
+
+@media (max-width: 760px) {
+  .login-fields {
+    grid-template-columns: 1fr;
+  }
+}

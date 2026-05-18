@@ -59,11 +59,39 @@
                 Выберите симптомы, получите возможное состояние и рекомендации по дальнейшим действиям.
               </p>
               <div class="hero-actions">
-                <button class="btn btn-primary" onclick="openScreen('home')">Начать анализ</button>
-                <button class="btn btn-secondary" onclick="openScreen('history')">Открыть историю</button>
-                <button class="btn btn-secondary" onclick="openOntologyViewer()">Просмотр онтологии</button>
-              </div>
-            </div>
+  <button class="btn btn-primary" onclick="startQuestionnaire()">Начать анализ</button>
+  <button class="btn btn-secondary" onclick="openScreen('history')">Открыть историю</button>
+
+  <button
+    class="btn btn-secondary doctor-only"
+    onclick="openOntologyViewer()"
+    style="display:none;"
+  >
+    Просмотр онтологии
+  </button>
+</div>
+
+<div class="login-panel" id="loginPanel">
+  <h3>Вход в систему</h3>
+
+  <p class="text">
+    Войдите как пользователь или врач.
+  </p>
+
+  <div class="login-fields">
+    <input id="loginInput" type="text" placeholder="Логин">
+    <input id="passwordInput" type="password" placeholder="Пароль">
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="loginUser()">Войти</button>
+    <button class="btn btn-secondary" onclick="logoutUser()">Выйти</button>
+  </div>
+
+  <p class="text" id="loginStatus">
+    Пользователь не авторизован.
+  </p>
+</div>
 
             <div class="stats-grid">
               <div class="stat-card">

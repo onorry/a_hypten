@@ -698,8 +698,7 @@ function clearHistory() {
 
 async function loadOntology() {
   try {
-    const response =
-      await fetch('ontology2.json');
+    const response = await fetch('https://a-hypten.onrender.com/api/ontology');
 
     if (!response.ok) {
       throw new Error(
@@ -1008,6 +1007,95 @@ function renderOntologySymptoms(content) {
   `;
 }
 
+let currentUser = null;
+
+function loadUserFromStorage() {
+  const raw = localStorage.getItem('ahypten_user');
+
+  if (!raw) {
+    currentUser = null;
+    updateAuthView();
+    return;
+  }
+
+  try {
+    currentUser = JSON.parse(raw);
+  } catch {
+    currentUser = null;
+  }
+
+  updateAuthView();
+}
+
+async function loginUser() {
+  const loginInput = document.getElementById('loginInput');
+  const passwordInput = document.getElementById('passwordInput');
+  const loginStatus = document.getElementById('loginStatus');
+
+  const login = loginInput?.value.trim();
+  const password = passwordInput?.value.trim();
+
+  if (!login || !password) {
+    loginStatus.textContent = 'Введите логин и пароль.';
+    return;
+  }
+
+  try {
+    const response = await fetch('https://a-hypten.onrender.com/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ login, password })
+    });
+
+    if (!response.ok) {
+      throw new Error('Неверный логин или пароль');
+    }
+
+    currentUser = await response.json();
+
+    localStorage.setItem(
+      'ahypten_user',
+      JSON.stringify(currentUser)
+    );
+
+    updateAuthView();
+  } catch (error) {
+    currentUser = null;
+    localStorage.removeItem('ahypten_user');
+
+    if (loginStatus) {
+      loginStatus.textContent = 'Неверный логин или пароль.';
+    }
+  }
+}
+
+function logoutUser() {
+  currentUser = null;
+  localStorage.removeItem('ahypten_user');
+  updateAuthView();
+}
+
+function updateAuthView() {
+  const loginStatus = document.getElementById('loginStatus');
+  const doctorButtons = document.querySelectorAll('.doctor-only');
+
+  if (loginStatus) {
+    loginStatus.textContent = currentUser
+      ? `Вы вошли как: ${currentUser.name} (${currentUser.role})`
+      : 'Пользователь не авторизован.';
+  }
+
+  doctorButtons.forEach(button => {
+    button.style.display =
+      currentUser?.role === 'doctor'
+        ? 'inline-flex'
+        : 'none';
+  });
+}
+
 loadHistoryFromStorage();
 renderHistory();
 loadOntology();
+loadUserFromStorage();
