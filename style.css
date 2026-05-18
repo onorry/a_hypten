@@ -795,21 +795,23 @@ h3 {
 
 .ontology-tabs {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
   padding: 14px 18px;
   border-bottom: var(--border);
-  overflow-x: auto;
 }
 
 .ontology-tab {
   border: none;
   border-radius: 999px;
-  padding: 10px 14px;
+  padding: 10px 16px;
   background: rgba(47, 128, 237, 0.08);
   color: var(--primary);
   font-weight: 800;
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  min-width: 130px;
 }
 
 .ontology-tab.active {
@@ -1017,4 +1019,11 @@ h3 {
 .login-dialog-body input:focus {
   border-color: rgba(47, 128, 237, 0.35);
   box-shadow: 0 0 0 4px rgba(47, 128, 237, 0.08);
+}
+
+@media (max-width: 760px) {
+  .ontology-tab {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 0;
+  }
 }

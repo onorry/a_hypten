@@ -854,17 +854,9 @@ function renderOntologySyndromes(content) {
 
 function renderOntologyPressure(content) {
   const pressureRanges = ontologyData.nodes.filter(node => {
-    const attrs = node.attributes || {};
-    const name = node.name.toLowerCase();
-
-    return (
-      attrs.type === 'pressure_range' ||
-      name.includes('систол') ||
-      name.includes('диастол') ||
-      name.includes('давлен') ||
-      name.includes('ад')
-    );
-  });
+  const attrs = node.attributes || {};
+  return attrs.type === 'pressure_range';
+});
 
   content.innerHTML = `
     <div class="ontology-section">
