@@ -1395,4 +1395,75 @@ h3 {
     min-width: 0;
   }
 }
+.result-report {
+  display: grid;
+  gap: 12px;
+}
 
+.result-metric {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.74);
+  border: 1px solid rgba(24, 49, 83, 0.08);
+}
+
+.result-metric span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.result-metric strong {
+  font-size: 14px;
+  text-align: right;
+}
+
+.result-matches {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.result-section-title {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.match-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(24, 49, 83, 0.08);
+}
+
+.match-name {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.match-meta {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.match-score {
+  flex-shrink: 0;
+  min-width: 48px;
+  text-align: center;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: rgba(47, 128, 237, 0.10);
+  color: var(--primary);
+  font-weight: 900;
+  font-size: 13px;
+}

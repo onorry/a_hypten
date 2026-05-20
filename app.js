@@ -541,35 +541,41 @@ statusTitle.textContent =
   `Наиболее вероятное состояние: ${best.name}`;
 
 const pressureText = pressureData
-  ? `Введённое АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст.`
-  : '';
+  ? `АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст.`
+  : 'АД не указано';
 
 statusText.innerHTML = `
-  <p>
-    ${pressureText}
-  </p>
-
-  <p>
-    Совпало симптомов:
-    ${best.matchCount} из ${best.total}.
-  </p>
-
-  <div class="match-list">
-    <div class="match-title">
-      Возможные совпадения:
+  <div class="result-report">
+    <div class="result-metric">
+      <span>Показатели</span>
+      <strong>${pressureText}</strong>
     </div>
 
-    ${possibleMatches.map(item => `
-      <div class="match-item">
-        <div class="match-name">
-          ${item.name}
-        </div>
+    <div class="result-metric">
+      <span>Совпадение</span>
+      <strong>${best.matchCount} из ${best.total}</strong>
+    </div>
 
-        <div class="match-meta">
-          Совпадений: ${item.matchCount} из ${item.total}
-        </div>
+    <div class="result-matches">
+      <div class="result-section-title">
+        Возможные состояния
       </div>
-    `).join('')}
+
+      ${possibleMatches.map(item => `
+        <div class="match-item">
+          <div>
+            <div class="match-name">${item.name}</div>
+            <div class="match-meta">
+              Совпадений: ${item.matchCount} из ${item.total}
+            </div>
+          </div>
+
+          <div class="match-score">
+            ${Math.round(item.score * 100)}%
+          </div>
+        </div>
+      `).join('')}
+    </div>
   </div>
 `;
 
@@ -590,6 +596,7 @@ addHistoryItem(
   best.name,
   selectedSymptoms
 );
+
 }
 
 function openScreen(name) {
@@ -731,41 +738,32 @@ async function loadOntology() {
     const response = await fetch('https://a-hypten.onrender.com/api/ontology');
 
     if (!response.ok) {
-      throw new Error(
-        'Не удалось загрузить ontology2.json'
-      );
+      throw new Error('Не удалось загрузить онтологию');
     }
 
-    ontologyData =
-      await response.json();
+    ontologyData = await response.json();
+    ontologyNodesById = buildNodesById(ontologyData);
+    syndromeMap = buildSyndromeMap();
 
-    ontologyNodesById =
-      buildNodesById(ontologyData);
+    const symptomClassId = getClassIdByName('# Симптом');
 
-    syndromeMap =
-      buildSyndromeMap();
+    const symptomCount = ontologyData.relations.filter(relation =>
+      relation.name === 'is_a' &&
+      relation.destination_node_id === symptomClassId
+    ).length;
 
     if (symptomCountStat) {
-      const symptomClassId = getClassIdByName('# Симптом');
-
-const symptomCount = ontologyData.relations.filter(relation =>
-  relation.name === 'is_a' &&
-  relation.destination_node_id === symptomClassId
-).length;
-
-symptomCountStat.textContent = symptomCount;
+      symptomCountStat.textContent = symptomCount;
     }
 
     if (ontologyInfo) {
-      ontologyInfo.textContent =
-        `Загружено симптомов: ${symptomCount}`;
+      ontologyInfo.textContent = `Загружено симптомов: ${symptomCount}`;
     }
   } catch (error) {
     console.error(error);
 
     if (ontologyInfo) {
-      ontologyInfo.textContent =
-        'Ошибка загрузки онтологии';
+      ontologyInfo.textContent = 'Ошибка загрузки онтологии';
     }
   }
 }
