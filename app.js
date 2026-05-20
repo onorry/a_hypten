@@ -55,9 +55,13 @@ function addSymptomNode(node) {
 }
 
 function updateSelectedSymptomsView() {
+  selectedList.classList.add('symptom-tags-list');
+
   selectedList.innerHTML = selectedSymptoms.length
-    ? selectedSymptoms.map(item => `<li>${item}</li>`).join('')
-    : '<li>Пока симптомы не выявлены</li>';
+    ? selectedSymptoms.map(item => `
+        <li class="symptom-tag-item">${item}</li>
+      `).join('')
+    : '<li class="symptom-tag-item muted">Пока симптомы не выявлены</li>';
 }
 
 function getStartQuestion() {
@@ -526,40 +530,66 @@ function analyzeQuestionnaireResult() {
   }
 
   const best = found[0];
+const possibleMatches = found.slice(0, 5);
 
-  statusBox.className =
-    best.score >= 0.5
-      ? 'status-box warning'
-      : 'status-box success';
+statusBox.className =
+  best.score >= 0.5
+    ? 'status-box warning'
+    : 'status-box success';
 
-  statusTitle.textContent =
-    `Наиболее вероятное состояние: ${best.name}`;
+statusTitle.textContent =
+  `Наиболее вероятное состояние: ${best.name}`;
 
-  const pressureText = pressureData
-    ? ` Введённое АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст.`
-    : '';
+const pressureText = pressureData
+  ? `Введённое АД: ${pressureData.systolic}/${pressureData.diastolic} мм рт. ст.`
+  : '';
 
-  statusText.textContent =
-    `Совпало симптомов: ${best.matchCount} из ${best.total}.` +
-    pressureText;
+statusText.innerHTML = `
+  <p>
+    ${pressureText}
+  </p>
 
-  let recommendations =
-    getRecommendationsFromOntology(best.id);
+  <p>
+    Совпало симптомов:
+    ${best.matchCount} из ${best.total}.
+  </p>
 
-  if (!recommendations.length) {
-    recommendations =
-      getFallbackRecommendations(best.name);
-  }
+  <div class="match-list">
+    <div class="match-title">
+      Возможные совпадения:
+    </div>
 
-  recommendationList.innerHTML =
-    recommendations
-      .map(item => `<li>${item}</li>`)
-      .join('');
+    ${possibleMatches.map(item => `
+      <div class="match-item">
+        <div class="match-name">
+          ${item.name}
+        </div>
 
-  addHistoryItem(
-    best.name,
-    selectedSymptoms
-  );
+        <div class="match-meta">
+          Совпадений: ${item.matchCount} из ${item.total}
+        </div>
+      </div>
+    `).join('')}
+  </div>
+`;
+
+let recommendations =
+  getRecommendationsFromOntology(best.id);
+
+if (!recommendations.length) {
+  recommendations =
+    getFallbackRecommendations(best.name);
+}
+
+recommendationList.innerHTML =
+  recommendations
+    .map(item => `<li>${item}</li>`)
+    .join('');
+
+addHistoryItem(
+  best.name,
+  selectedSymptoms
+);
 }
 
 function openScreen(name) {
