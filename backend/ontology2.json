@@ -1,5 +1,5 @@
 {
-    "last_id": "1065",
+    "last_id": "1077",
     "namespaces": {
         "default": "http://knova.ru/user/1750249255820",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -3268,6 +3268,74 @@
             "namespace": "http://knova.ru/user/1750249255820",
             "position_x": 600,
             "position_y": 3100
+        },
+        {
+            "attributes": {
+                "def": "Класс пользователей приложения для разграничения ролей доступа"
+            },
+            "id": "1066",
+            "name": "# Пользователь",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 5100,
+            "position_y": 120
+        },
+        {
+            "attributes": {
+                "def": "Класс ролей пользователей приложения"
+            },
+            "id": "1067",
+            "name": "# Роль",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 5550,
+            "position_y": 120
+        },
+        {
+            "attributes": {
+                "login": "user",
+                "password": "user123",
+                "type": "account",
+                "note": "Демонстрационная учетная запись пользователя"
+            },
+            "id": "1068",
+            "name": "Пользователь",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 5100,
+            "position_y": 320
+        },
+        {
+            "attributes": {
+                "login": "doctor",
+                "password": "doctor123",
+                "type": "account",
+                "note": "Демонстрационная учетная запись врача"
+            },
+            "id": "1069",
+            "name": "Врач",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 5100,
+            "position_y": 470
+        },
+        {
+            "attributes": {
+                "title": "Обычный пользователь",
+                "access": "analysis"
+            },
+            "id": "1070",
+            "name": "user",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 5550,
+            "position_y": 320
+        },
+        {
+            "attributes": {
+                "title": "Врач",
+                "access": "analysis, ontology_view"
+            },
+            "id": "1071",
+            "name": "doctor",
+            "namespace": "http://knova.ru/user/1750249255820",
+            "position_x": 5550,
+            "position_y": 470
         }
     ],
     "relations": [
@@ -8638,6 +8706,54 @@
             "name": "is_a",
             "namespace": "http://knova.ru/user/1750249255820",
             "source_node_id": "1064"
+        },
+        {
+            "attributes": {},
+            "id": "1072",
+            "name": "is_a",
+            "namespace": "",
+            "source_node_id": "1068",
+            "destination_node_id": "1066"
+        },
+        {
+            "attributes": {},
+            "id": "1073",
+            "name": "is_a",
+            "namespace": "",
+            "source_node_id": "1069",
+            "destination_node_id": "1066"
+        },
+        {
+            "attributes": {},
+            "id": "1074",
+            "name": "is_a",
+            "namespace": "",
+            "source_node_id": "1070",
+            "destination_node_id": "1067"
+        },
+        {
+            "attributes": {},
+            "id": "1075",
+            "name": "is_a",
+            "namespace": "",
+            "source_node_id": "1071",
+            "destination_node_id": "1067"
+        },
+        {
+            "attributes": {},
+            "id": "1076",
+            "name": "has_role",
+            "namespace": "",
+            "source_node_id": "1068",
+            "destination_node_id": "1070"
+        },
+        {
+            "attributes": {},
+            "id": "1077",
+            "name": "has_role",
+            "namespace": "",
+            "source_node_id": "1069",
+            "destination_node_id": "1071"
         }
     ],
     "visualize_ont_path": ""
