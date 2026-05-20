@@ -455,19 +455,16 @@ const score =
   return results
     .filter(item => item.matchCount > 0)
     .sort((a, b) => {
-      if (b.score !== a.score) {
-        return b.score - a.score;
-      }
+  if (b.matchCount !== a.matchCount) {
+    return b.matchCount - a.matchCount;
+  }
 
-      if (b.matchCount !== a.matchCount) {
-        return b.matchCount - a.matchCount;
-      }
+  if (b.score !== a.score) {
+    return b.score - a.score;
+  }
 
-      return a.name.localeCompare(
-        b.name,
-        'ru'
-      );
-    });
+  return a.name.localeCompare(b.name, 'ru');
+});
 }
 
 function getRecommendationsFromOntology(
