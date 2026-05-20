@@ -434,8 +434,12 @@ function findDiagnosesBySymptoms(selected) {
     const total =
       syndromeSymptoms.length || 1;
 
-    const score =
-      matchCount / total;
+    const coverageScore = matchCount / total;
+const evidenceScore = matchCount / Math.max(selected.length, 1);
+
+const score =
+  coverageScore * 0.6 +
+  evidenceScore * 0.4;
 
     return {
       id: syndrome.id,
@@ -530,7 +534,13 @@ function analyzeQuestionnaireResult() {
   }
 
   const best = found[0];
-const possibleMatches = found.slice(0, 5);
+const possibleMatches = found.slice(1, 6);
+
+const bestNode = ontologyNodesById[best.id];
+
+const syndromeDescription =
+  bestNode?.attributes?.def ||
+  'Описание синдрома в онтологической модели не указано.';
 
 statusBox.className =
   best.score >= 0.5
@@ -555,6 +565,11 @@ statusText.innerHTML = `
       <span>Совпадение</span>
       <strong>${best.matchCount} из ${best.total}</strong>
     </div>
+
+<div class="result-description">
+  <span>Описание состояния</span>
+  <p>${syndromeDescription}</p>
+</div>
 
     <div class="result-matches">
       <div class="result-section-title">
