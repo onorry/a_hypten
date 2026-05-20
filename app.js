@@ -716,13 +716,19 @@ async function loadOntology() {
       buildSyndromeMap();
 
     if (symptomCountStat) {
-      symptomCountStat.textContent =
-        ontologyData.nodes.length;
+      const symptomClassId = getClassIdByName('# Симптом');
+
+const symptomCount = ontologyData.relations.filter(relation =>
+  relation.name === 'is_a' &&
+  relation.destination_node_id === symptomClassId
+).length;
+
+symptomCountStat.textContent = symptomCount;
     }
 
     if (ontologyInfo) {
       ontologyInfo.textContent =
-        `Загружено элементов онтологии: ${ontologyData.nodes.length}`;
+        `Загружено симптомов: ${symptomCount}`;
     }
   } catch (error) {
     console.error(error);
